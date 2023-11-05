@@ -27,10 +27,19 @@ function handleClick(event){
         return;
     };
 
+    event.preventDefault();
+
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `);
 
 instance.show();
 };
-  
+
+list.addEventListener("keydown", handleKeyDown);
+function handleKeyDown(event){
+  if(event.key !== Escape){
+    return;
+  }
+  instant.close();
+};
