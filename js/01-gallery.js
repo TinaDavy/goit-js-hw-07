@@ -34,12 +34,13 @@ function handleClick(event){
 `);
 
 instance.show();
+
+document.addEventListener("keydown", handleKeyDown);
+
+function handleKeyDown(event){
+  if (event.key === 'Escape') {
+    instance.close();
+  }
 };
 
-list.addEventListener("keydown", handleKeyDown);
-function handleKeyDown(event){
-  if(event.key !== Escape){
-    return;
-  }
-  instant.close();
 };
