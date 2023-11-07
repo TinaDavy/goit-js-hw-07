@@ -31,7 +31,8 @@ function handleClick(event){
 
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
-`);
+`, {onShow:(instance) => {list.removeEventListener("click", handleClick)},
+onClose: (instance) => {document.removeEventListener("keydown", handleKeyDown)}});
 
 instance.show();
 
@@ -43,7 +44,5 @@ function handleKeyDown(event){
   }
 };
 
-instance.on("close", () => {document.removeEventListener("keydown", handleKeyDown)});
-instance.on("click", () => {document.removeEventListener("click", handleClick)});
 
 };
